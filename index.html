@@ -1,0 +1,631 @@
+<!doctype html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Menu · Kyōdaï Ramen</title>
+    <script>
+    </script>
+</head>
+<style>
+	/***
+	    The new CSS reset - version 1.11.3 (last updated 25.08.2024)
+	    GitHub page: https://github.com/elad2412/the-new-css-reset
+	***/
+
+	/*
+	    Remove all the styles of the "User-Agent-Stylesheet", except for the 'display' property
+	    - The "symbol *" part is to solve Firefox SVG sprite bug
+	    - The "html" element is excluded, otherwise a bug in Chrome breaks the CSS hyphens property (https://github.com/elad2412/the-new-css-reset/issues/36)
+	 */
+	*:where(:not(html, iframe, canvas, img, svg, video, audio):not(svg *, symbol *)) {
+	    all: unset;
+	    display: revert;
+	}
+
+	/* Preferred box-sizing value */
+	*,
+	*::before,
+	*::after {
+	    box-sizing: border-box;
+	}
+
+	/* Fix mobile Safari increase font-size on landscape mode */
+	html {
+	    -moz-text-size-adjust: none;
+	    -webkit-text-size-adjust: none;
+	    text-size-adjust: none;
+	}
+
+	/* Reapply the pointer cursor for anchor tags */
+	a, button {
+	    cursor: revert;
+	}
+
+	/* Remove list styles (bullets/numbers) */
+	ol, ul, menu, summary {
+	    list-style: none;
+	}
+
+	/* Firefox: solve issue where nested ordered lists continue numbering from parent (https://bugzilla.mozilla.org/show_bug.cgi?id=1881517) */
+	ol {
+	    counter-reset: revert;
+	}
+
+	/* For images to not be able to exceed their container */
+	img {
+	    max-inline-size: 100%;
+	    max-block-size: 100%;
+	}
+
+	/* removes spacing between cells in tables */
+	table {
+	    border-collapse: collapse;
+	}
+
+	/* Safari - solving issue when using user-select:none on the <body> text input doesn't working */
+	input, textarea {
+	    -webkit-user-select: auto;
+	}
+
+	/* revert the 'white-space' property for textarea elements on Safari */
+	textarea {
+	    white-space: revert;
+	}
+
+	/* minimum style to allow to style meter element */
+	meter {
+	    -webkit-appearance: revert;
+	    appearance: revert;
+	}
+
+	/* preformatted text - use only for this feature */
+	:where(pre) {
+	    all: revert;
+	    box-sizing: border-box;
+	}
+
+	/* reset default text opacity of input placeholder */
+	::placeholder {
+	    color: unset;
+	}
+
+	/* fix the feature of 'hidden' attribute.
+	   display:revert; revert to element instead of attribute */
+	:where([hidden]) {
+	    display: none;
+	}
+
+	/* revert for bug in Chromium browsers
+	   - fix for the content editable attribute will work properly.
+	   - webkit-user-select: auto; added for Safari in case of using user-select:none on wrapper element*/
+	:where([contenteditable]:not([contenteditable="false"])) {
+	    -moz-user-modify: read-write;
+	    -webkit-user-modify: read-write;
+	    overflow-wrap: break-word;
+	    -webkit-line-break: after-white-space;
+	    -webkit-user-select: auto;
+	}
+
+	/* apply back the draggable feature - exist only in Chromium and Safari */
+	:where([draggable="true"]) {
+	    -webkit-user-drag: element;
+	}
+
+	/* Revert Modal native behavior */
+	:where(dialog:modal) {
+	    all: revert;
+	    box-sizing: border-box;
+	}
+
+	/* Remove details summary webkit styles */
+	::-webkit-details-marker {
+	    display: none;
+	}
+	--------------------FONT SIZE--------------------
+
+	/* @link https://utopia.fyi/type/calculator?c=320,12,1.6180339887,1281,16,1.6180339887,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
+
+	:root {
+	  /* Step -2: 4.5836px → 6.1115px */
+	  --font-size--2: clamp(0.2865rem, 0.2547rem + 0.159vw, 0.382rem);
+	  /* Step -1: 7.4164px → 9.8885px */
+	  --font-size--1: clamp(0.4635rem, 0.4121rem + 0.2572vw, 0.618rem);
+	  /* Step 0: 12px → 16px */
+	  --font-size-0: clamp(0.75rem, 0.6668rem + 0.4162vw, 1rem);
+	  /* Step 1: 19.4164px → 25.8885px */
+	  --font-size-1: clamp(1.2135rem, 1.0788rem + 0.6735vw, 1.618rem);
+	  /* Step 2: 31.4164px → 41.8885px */
+	  --font-size-2: clamp(1.9635rem, 1.7456rem + 1.0897vw, 2.618rem);
+	  /* Step 3: 50.8328px → 67.7771px */
+	  --font-size-3: clamp(3.1771rem, 2.8244rem + 1.7632vw, 4.2361rem);
+	  /* Step 4: 82.2492px → 109.6656px */
+	  --font-size-4: clamp(5.1406rem, 4.57rem + 2.8529vw, 6.8541rem);
+	  /* Step 5: 133.082px → 177.4427px */
+	  --font-size-5: clamp(8.3176rem, 7.3944rem + 4.6161vw, 11.0902rem);
+	}
+
+	--------------------SPACE--------------------
+
+	/* @link https://utopia.fyi/space/calculator?c=320,12,1.6180339887,1281,16,1.6180339887,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
+
+	:root {
+	  /* Space 3xs: 3px → 4px */
+	  --space-3xs: clamp(0.1875rem, 0.1667rem + 0.1041vw, 0.25rem);
+	  /* Space 2xs: 6px → 8px */
+	  --space-2xs: clamp(0.375rem, 0.3334rem + 0.2081vw, 0.5rem);
+	  /* Space xs: 9px → 12px */
+	  --space-xs: clamp(0.5625rem, 0.5001rem + 0.3122vw, 0.75rem);
+	  /* Space s: 12px → 16px */
+	  --space-s: clamp(0.75rem, 0.6668rem + 0.4162vw, 1rem);
+	  /* Space m: 18px → 24px */
+	  --space-m: clamp(1.125rem, 1.0001rem + 0.6243vw, 1.5rem);
+	  /* Space l: 24px → 32px */
+	  --space-l: clamp(1.5rem, 1.3335rem + 0.8325vw, 2rem);
+	  /* Space xl: 36px → 48px */
+	  --space-xl: clamp(2.25rem, 2.0003rem + 1.2487vw, 3rem);
+	  /* Space 2xl: 48px → 64px */
+	  --space-2xl: clamp(3rem, 2.667rem + 1.6649vw, 4rem);
+	  /* Space 3xl: 72px → 96px */
+	  --space-3xl: clamp(4.5rem, 4.0005rem + 2.4974vw, 6rem);
+
+	  /* One-up pairs */
+	  /* Space 3xs-2xs: 3px → 8px */
+	  --space-3xs-2xs: clamp(0.1875rem, 0.0834rem + 0.5203vw, 0.5rem);
+	  /* Space 2xs-xs: 6px → 12px */
+	  --space-2xs-xs: clamp(0.375rem, 0.2501rem + 0.6243vw, 0.75rem);
+	  /* Space xs-s: 9px → 16px */
+	  --space-xs-s: clamp(0.5625rem, 0.4168rem + 0.7284vw, 1rem);
+	  /* Space s-m: 12px → 24px */
+	  --space-s-m: clamp(0.75rem, 0.5003rem + 1.2487vw, 1.5rem);
+	  /* Space m-l: 18px → 32px */
+	  --space-m-l: clamp(1.125rem, 0.8336rem + 1.4568vw, 2rem);
+	  /* Space l-xl: 24px → 48px */
+	  --space-l-xl: clamp(1.5rem, 1.0005rem + 2.4974vw, 3rem);
+	  /* Space xl-2xl: 36px → 64px */
+	  --space-xl-2xl: clamp(2.25rem, 1.6673rem + 2.9136vw, 4rem);
+	  /* Space 2xl-3xl: 48px → 96px */
+	  --space-2xl-3xl: clamp(3rem, 2.001rem + 4.9948vw, 6rem);
+
+	  /* Custom pairs */
+	  /* Space s-l: 12px → 32px */
+	  --space-s-l: clamp(0.75rem, 0.3338rem + 2.0812vw, 2rem);
+	}
+	
+	body{
+		padding: 1rem 2rem;
+		background-color: black;
+	}
+	
+	*{
+		font-family: Arial, sans-serif;
+		font-size: clamp(0.75rem, 0.6668rem + 0.4162vw, 1rem);
+		color: white;
+	}
+	
+	strong, b, h4{
+		font-weight: bold;
+	}
+	
+	i{
+		font-style: italic;
+	}
+	
+	h1{
+		font-size: clamp(3.1771rem, 2.8244rem + 1.7632vw, 4.2361rem);
+		margin-bottom: 0.5em;
+	}
+	h2{
+		font-size: clamp(1.9635rem, 1.7456rem + 1.0897vw, 2.618rem);
+	}
+	h3{
+		font-size: clamp(1.2135rem, 1.0788rem + 0.6735vw, 1.618rem);
+	}
+	h2, h3, h4{
+		margin: 0.75em auto 1em;
+	}
+	small, small *{
+		font-size: clamp(0.4635rem, 0.4121rem + 0.2572vw, 0.618rem);
+	}
+	table{
+		margin: 1rem 0;
+		background-color: white;
+	}
+	table *, table * *{
+		color: black;
+	}
+	th, td{
+		border: 1px solid black;
+		padding: 1em;
+		vertical-align: center;
+	}
+	ul, ol{
+		margin-top: 1em;
+	}
+	.tip{
+		display: inline-block;
+		margin: 1rem 0;
+		padding: 0.75rem;
+		border: 2px dotted white;
+	}
+</style>
+<body>
+	<main>
+		<header>
+			<h1>Kyōdaï Ramen</h1>
+			<p>La cuisine japonaise, maison</p>
+			<p>Carte imaginée, élaborée et signée par le <strong>Chef Laurent Suk</strong>.</p>
+		</header>
+		<section>
+			<h2>Nos Ramen</h2>
+			<p>Tous nos Ramen, sauf le végétarien, sont préparés avec un bouillon épais de poulet fermier « <i>Label Rouge</i> ». Le bouillon est sans sel ajouté : c’est le tare qui donne son caractère. <br>Nouilles maison, Tamago, Chashu de porc, Menmas et oignons verts accompagnent nos Ramen. <br><strong>Seul l’assaisonnement du bouillon change.</strong></p>
+			<p class="tip"><strong>Demandez nos Ramen du moment !</strong></p>
+			<table>
+			  <caption>
+			  </caption>
+			  <thead>
+			    <tr>
+			      <th scope="col"></th>
+			      <th scope="col">Classique</th>
+			      <th scope="col">Enfant</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			    <tr>
+			      <th scope="row">
+					  <strong>Shoyu</strong>
+					  <br>
+					  Bouillon assaisonné de sauce soja artisanale vieillie en fût de cèdre.
+				  </th>
+			      <td>15 €</td>
+			      <td>7,50 €</td>
+			    </tr>
+			    <tr>
+			      <th scope="row">
+					  <strong>Miso / Miso Spicy</strong>
+					  <br>
+					  Mélange de misos cuisinés maison.
+				  </th>
+			      <td>16 €</td>
+			      <td>8 €</td>
+			    </tr>
+			    <tr>
+			      <th scope="row">
+					  <strong>Black sésame</strong>
+					  <br>
+					  Deux sels japonais et sauce au sésame noir maison
+				  </th>
+			      <td>17 €</td>
+			      <td>8,50 €</td>
+			    </tr>
+			    <tr>
+			      <th scope="row">
+					  <strong>Curry japonais / Curry Spicy</strong>
+					  <br>
+					  Base miso et curry japonais.
+				  </th>
+			      <td>17 €</td>
+			      <td>8,50 €</td>
+			    </tr>
+			    <tr>
+			      <th scope="row">
+					  <strong>Végétarien</strong>
+					  <br>
+					  Bouillon végétarien et légumes de saison.
+				  </th>
+			      <td>17 €</td>
+			      <td>8,50 €</td>
+			    </tr>
+			  </tbody>
+			</table>
+			<h4>Les traditionnels</h4>
+			<table>
+			  <caption>
+			  </caption>
+			  <thead>
+			    <tr>
+			      <th scope="col"></th>
+			      <th scope="col">Classique</th>
+			      <th scope="col">Enfant</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			    <tr>
+			      <th scope="row">
+					  <strong>Katsuobushi</strong>
+					  <br>
+					  Base Shoyu, dashi de bonites séchées (famille du thon) légèrement fumées.
+				  </th>
+			      <td>16 €</td>
+			      <td>8 €</td>
+			    </tr>
+			    <tr>
+			      <th scope="row">
+					  <strong>Iwashibushi</strong>
+					  <br>
+					  Base Shoyu, dashi de sardines séchées légèrement fumées.
+				  </th>
+			      <td>17 €</td>
+			      <td>8,50 €</td>
+			    </tr>
+			    <tr>
+			      <th scope="row">
+					  <strong>Kyōdaï</strong>
+					  <br>
+					  Base Shoyu, duo de dashi de sardines et de bonites séchées légèrement fumées.
+				  </th>
+			      <td>18 €</td>
+			      <td>9 €</td>
+			    </tr>
+			  </tbody>
+			</table>
+			<h3>Les suppléments</h3>
+			<p>Niveau de piment (pour Miso spicy et Curry spicy uniquement): Léger, moyen, fort ou au delà, pour les plus courageux <strong>+ 0,50 €</strong>.</p>
+			<table>
+			  <tbody>
+			    <tr>
+			      <th scope="row">Nouilles</th>
+			      <td>3 €</td>
+			    </tr>
+			    <tr>
+			      <th scope="row">Chashu de porc</th>
+			      <td>3 €</td>
+			    </tr>
+			    <tr>
+			      <th scope="row">Tamago</th>
+			      <td>2 €</td>
+			    </tr>
+			    <tr>
+			      <th scope="row">Chashu de poulet</th>
+			      <td>4 €</td>
+			    </tr>
+			    <tr>
+			      <th scope="row">Menmas</th>
+			      <td>1,50 €</td>
+			    </tr>
+			    <tr>
+			      <th scope="row">Feuilles de Nori</th>
+			      <td>1,50 €</td>
+			    </tr>
+			  </tbody>
+			</table>
+			<p>Remplacement du Chashu de porc par du Chashu de poulet : <strong>+ 1 €</strong>.</p>
+			<h3>Lexique</h3>
+			<ul>
+				<li><strong>Nouilles</strong>: Elles sont fabriquées à la main par nos soins avec une farine de blé spécifique Kyōdaï en collaboration avec le Moulin de Signy-l’Abbaye (08)</li>
+				<li><strong>Naganegi</strong>: Oignon vert japonais, proche de la cébette.</li>
+				<li><strong>Chashu de porc</strong>: Viande fermière « Label Rouge » marinée et cuite à basse température, puis grillée à la flamme.</li>
+				<li><strong>Menma</strong>: Pousses de bambou cuisinées.
+</li>
+				<li><strong>Tamago</strong>: Œuf mollet mariné minimum 24 heures.
+</li>
+				<li><strong>Dashi</strong>: Type de bouillon clair à partir de différents ingrédients séchés infusés dans l’eau.
+</li>
+				<li><strong>Bouillon épais</strong>: Sirupeux et gustativement plus marqué que le bouillon clair.</li>
+			</ul>
+		</section>
+		<section>
+			<h2>Nos plats japonais</h2>
+			<p class="tip">Vous ne voulez pas de Ramen? Découvrez nos alternatives !</p>
+			<p>Les Tonkatsu et Torikatsu sont servis avec du chou blanc râpé.</p>
+			<p>Remplacement du chou par du riz : <strong>+ 2 €</strong>.</p>
+			<table>
+			  <tbody>
+			    <tr>
+			      <th scope="row">
+					  <strong>Tonkatsu échine</strong>
+					  <br>
+					  Plat traditionnel à base de porc pané et frit.
+				  </th>
+			      <td>14 €</td>
+			    </tr>
+			    <tr>
+			      <th scope="row">
+					  <strong>Torikatsu</strong>
+					  <br>
+					  Plat traditionnel à base de poulet pané et frit.
+				  </th>
+			      <td>14,50 €</td>
+			    </tr>
+			    <tr>
+			      <th scope="row">
+					  <strong>Kare Raisu</strong>
+					  <br>
+					  Poulet accompagné d’une sauce curry japonais, pommes de terre, carottes et riz.
+				  </th>
+			      <td>14,50 €</td>
+			    </tr>
+			    <tr>
+			      <th scope="row">
+					  <strong>Yakisoba</strong> <i>(du mardi au jeudi)</i>
+					  <br>
+					  Nouilles sautées avec sauce Yakisoba, chou, poitrine de porc, poivrons et germes de soja.
+				  </th>
+			      <td>14,50 €</td>
+			    </tr>
+			  </tbody>
+			</table>
+		</section>
+		<section>
+			<h2>Nos accompagnements à partager (ou pas)</h2>
+			<p>Préparés à la commande: ils peuvent arriver après vos ramen.</p>
+			<table>
+			  <tbody>
+			    <tr>
+			      <th scope="row">
+					  <strong>Gyoza Maison</strong>
+					  <br>
+					  Raviolis de blé au choix: farce au porc, au poulet ou végétarienne.
+				  </th>
+			      <td>7 € / 6 pièces</td>
+			    </tr>
+			    <tr>
+			      <th scope="row">
+					  <strong>Karaage</strong>
+					  <br>
+					  Beignets de poulet marinés et frits.
+				  </th>
+			      <td>6 €</td>
+			    </tr>
+			    <tr>
+			      <th scope="row">
+					  <strong>Onigiri</strong>
+					  <br>
+					  Boulette de riz enveloppée d’une feuille de nori. Différents saveurs disponibles !
+				  </th>
+			      <td>4 € / pièce</td>
+			    </tr>
+			    <tr>
+			      <th scope="row">
+					  <strong>Sunomono</strong>
+					  <br>
+					  Légumes croquants marinés au vinaigre de riz.
+				  </th>
+			      <td>4 €</td>
+			    </tr>
+			  </tbody>
+			</table>
+		</section>
+		<small class="tip">Origine des viandes: <strong>France</strong></small>
+		<section>
+			<h2>Et pour finir en douceur</h2>
+			<table>
+			  <tbody>
+			    <tr>
+			      <th scope="row">
+					  <strong>Mochis du jour</strong>
+				  </th>
+			      <td>3,50 € / pièce</td>
+			    </tr>
+			  </tbody>
+			</table>
+			<p>Le mochi est une pâtisserie traditionnelle japonaise. Il s’agit d’une boule toute douce de riz gluant au cœur composé, par exemple, de pâte de haricot rouge sucrée (<i>anko</i>) ou de haricot blanc (<i>shiro</i>).</p>
+			<p><b>Préparés chaque jour par nos soins et selon les envies, demandez les saveurs disponibles !</b></p>
+			<p><b>Ce dessert ne peut être réservé à l’avance et sera servi en fin de repas, dans la limite des stocks.</b></p>
+		</section>
+		<section>
+			<h2>Carte des boissons</h2>
+			<h3>Nos bières artisanales</h3>
+			<table>
+			  <tbody>
+			    <tr>
+			      <th scope="row">
+					  <strong>Kyōdaï Original</strong> · 5 %
+					  <br>
+					  Bière maison, en collaboration avec la « <i>Brasserie La Tuilerie</i> » d’Augny (57). <br>Bière blanche au poivre Sanshō, légère et acidulée.
+				  </th>
+			      <td>7 €</td>
+			    </tr>
+			    <tr>
+			      <th scope="row">
+					  <i>Coedo</i> <strong>Beniaka</strong> · Ale · 7 %
+					  <br>
+					  Bière ambrée à base de patates douces Kintoki. Arômes de patates douces rôties, notes de chocolat, figues sèches et caramel.
+				  </th>
+			      <td>6,50 €</td>
+			    </tr>
+			    <tr>
+			      <th scope="row">
+					  <i>Coedo</i> <strong>Shiro</strong> · 5,5 %
+					  <br>
+					  Bière blanche aux arômes sucrés de banane, de poire et avec quelques notes de clou de girofle.
+				  </th>
+			      <td>6,50 €</td>
+			    </tr>
+			    <tr>
+			      <th scope="row">
+					  <i>Coedo</i> <strong>Marihana</strong> · IPA · 4,5 %
+					  <br>
+					  Robe légèrement dorée, arôme délicat d’agrumes et de houblon.
+				  </th>
+			      <td>6,50 €</td>
+			    </tr>
+			    <tr>
+			      <th scope="row">
+					  <i>Coedo</i> <strong>Ruri</strong> · Lager · 5 %
+					  <br>
+					  Pils légère et équilibrée.
+				  </th>
+			      <td>6,50 €</td>
+			    </tr>
+			    <tr>
+			      <th scope="row">
+					  <i>Coedo</i> <strong>Kyara</strong> · Indian Pale Lager · 5,5 %
+					  <br>
+					  Floral, fruité et corsé.
+				  </th>
+			      <td>6,50 €</td>
+			    </tr>
+			    <tr>
+			      <th scope="row">
+					  <i>Iki</i> <strong>Yuzu</strong> · 4,5 %
+					  <br>
+					  Bière blonde bio haut de gamme au citron japonais (Yuzu) et au thé vert. Légère, acidulée et parfumée.
+				  </th>
+			      <td>6,50 €</td>
+			    </tr>
+			    <tr>
+			      <th scope="row">
+					  <i>Iki</i> <strong>Ginger</strong> · 5,5 %
+					  <br>
+					  Unique, bio et originale, cette bière est issue du brassage de feuilles de thé Sencha fraîches et de gingembre.
+				  </th>
+			      <td>6,50 €</td>
+			    </tr>
+			  </tbody>
+			</table>
+			<h3>Nos thés glacés · 25 cl · 5,50 €</h3>
+			<p>De la marque <i>Mangajo</i>, 100% naturel et sans sucres ajoutés.</p>
+			<ul>
+				<li>Citron / Thé Vert</li>
+				<li>Grenade / Thé Vert</li>
+				<li>Goji / Thé Vert </li>
+				<li>Yuzu / Citron</li>
+				<li>Baie d’Açaï / Thé Vert</li>
+				<li>Rooïbos / Jus de Raisin</li>
+			</ul>
+			<h3>Nos limonades Ramune · 20 cl · 4,50 €</h3>
+			<p>De la marque <i>Hanabi</i>, ses différentes saveurs remplaceront aisément vos soda habituels !</p>
+			<ul>
+				<li>Nature</li>
+				<li>Litchi</li>
+				<li>Melon</li>
+				<li>Prune</li>
+				<li>Matcha</li>
+			</ul>
+			<h3>Nos spiritueux</h3>
+			<h4>Un verre (10 cl) de:</h4>
+			<ul>
+				<li>Saké sec · 8 €</li>
+				<li>Saké fruité · 8 €</li>
+				<li>Umeshu (liqueur de prune) · 8 €</li>
+				<li>Liqueur de Yuzu · 6 €</li>
+			</ul>
+			<h4>Une bouteille de:</h4>
+			<ul>
+				<li>Saké non-filtré (24 cl) · 10 €</li>
+				<li>Saké pétillant (30 cl) · 15 €</li>
+			</ul>
+			<h3>Nos thés chauds · 4 € / personne</h3>
+			<p>Servis à la théière.</p>
+			<ul>
+				<li><b>Sencha</b>: thé vert classique</li>
+				<li><b>Hōjicha</b>: thé vert torréfié</li>
+				<li><b>Genmaicha</b>: thé vert au riz grillé</li>
+			</ul>
+			<h3>Nos eaux · 50 cl</h3>
+			<ul>
+				<li>Eau plate · 1,50 €</li>
+				<li>Eau pétillante · 2 €</li>
+			</ul>
+			<small class="tip">L’abus d’alcool est dangereux pour la santé, à consommer avec modération.</small>
+		</section>
+	</main>
+	<aside>
+		<h2>Les allergènes</h2>
+		<p>Allergènes identifiés d’après les recettes et les informations de la carte. Une case vide ne garantit pas l’absence de l’allergène: en cas de doute ou d’allergie, demandez confirmation à l’équipe.</p>
+	</aside>
+</body>
+
+</html>
