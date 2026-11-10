@@ -193,19 +193,30 @@
 	  --space-s-l: clamp(0.75rem, 0.3338rem + 2.0812vw, 2rem);
 	}
 	
+	:root{
+		--color-black: black;
+		--color-white: white;
+		--color-primary: rgb(218, 197, 186); /*#dac5ba*/
+		--color-secondary: rgb(178, 36, 41); /*#b22429*/
+		--color-tertary: rgb(63, 60, 37); /*#3f3c25*/
+	}
+	
 	body{
 		padding: 1rem 2rem;
-		background-color: black;
+		background-color: var(--color-primary);
 	}
 	
 	*{
 		font-family: Arial, sans-serif;
 		font-size: clamp(0.75rem, 0.6668rem + 0.4162vw, 1rem);
-		color: white;
+		color: var(--color-tertary);
 	}
 	
 	strong, b, h4{
 		font-weight: bold;
+	}
+	strong{
+		color: var(--color-secondary);
 	}
 	
 	i{
@@ -222,6 +233,9 @@
 	h3{
 		font-size: clamp(1.2135rem, 1.0788rem + 0.6735vw, 1.618rem);
 	}
+	h2, h4{
+		text-transform: uppercase;
+	}
 	h2, h3, h4{
 		margin: 0.75em auto 1em;
 	}
@@ -230,27 +244,30 @@
 	}
 	table{
 		margin: 1rem 0;
-		background-color: white;
-	}
-	table *, table * *{
-		color: black;
-	}
-	table caption{
-		color: white;
 	}
 	th, td{
-		border: 1px solid black;
+		border: 1px solid var(--color-secondary);
 		padding: 1em;
 		vertical-align: center;
 	}
 	ul, ol{
+		list-style: inside;
 		margin-top: 1em;
 	}
+	p + p{
+		margin-top: 0.5em;
+	}
 	.tip{
+		margin-bottom: 1rem;
 		display: inline-block;
-		margin: 1rem 0;
 		padding: 0.75rem;
-		border: 2px dotted white;
+		background-color: var(--color-secondary);
+	}
+	.tip:not(h2 + .tip){
+		margin-top: 1rem;
+	}
+	.tip, .tip *{
+		color: var(--color-primary);
 	}
 </style>
 <body>
@@ -262,11 +279,10 @@
 		</header>
 		<section>
 			<h2>Nos Ramen</h2>
-			<p>Tous nos Ramen, sauf le végétarien, sont préparés avec un bouillon épais de poulet fermier « <i>Label Rouge</i> ». Le bouillon est sans sel ajouté : c’est le tare qui donne son caractère. <br>Nouilles maison, Tamago, Chashu de porc, Menmas et oignons verts accompagnent nos Ramen. <br><strong>Seul l’assaisonnement du bouillon change.</strong></p>
+			<p>Tous nos Ramen, sauf le végétarien, sont préparés avec un bouillon épais de poulet fermier « <i>Label Rouge</i> ». Le bouillon est sans sel ajouté : c’est le tare qui donne son caractère. <br>Nouilles maison, Tamago, Chashu de porc, Menmas et oignons verts accompagnent nos Ramen. <br><b>Seul l’assaisonnement du bouillon change.</b></p>
 			<p class="tip"><strong>Demandez nos Ramen du moment !</strong></p>
+			<h4>Les classiques</h4>
 			<table>
-			  <caption>
-			  </caption>
 			  <thead>
 			    <tr>
 			      <th scope="col"></th>
@@ -490,7 +506,7 @@
 			  </tbody>
 			</table>
 		</section>
-		<small class="tip">Origine des viandes: <strong>France</strong></small>
+		<small class="tip">Origine des viandes: <b>France</b></small>
 		<section>
 			<h2>Et pour finir en douceur</h2>
 			<table>
@@ -622,7 +638,7 @@
 				<li>Eau plate · 1,50 €</li>
 				<li>Eau pétillante · 2 €</li>
 			</ul>
-			<small class="tip">L’abus d’alcool est dangereux pour la santé, à consommer avec modération.</small>
+			<p class="tip">L’abus d’alcool est dangereux pour la santé, à consommer avec modération.</p>
 		</section>
 	</main>
 	<aside>
